@@ -1,207 +1,170 @@
-<h1 align="center" style="font-size:48px">🎯 Groundwater Fluoride Prediction Using Machine Learning &amp; Fuzzy Logic</h1>
+<h1 align="center" style="font-size:48px">Groundwater Fluoride Prediction Using Machine Learning & Fuzzy Logic</h1>
 
 <p align="center">
-A data-driven, intelligent, and scalable framework to analyze groundwater fluoride contamination across India using Machine Learning, Regression Models, and a Fuzzy Inference System (FIS).  
-This system supports early detection of fluoride-vulnerable regions and helps government agencies &amp; water-resource managers make informed decisions.
+A data-driven, intelligent, and scalable framework to analyze groundwater fluoride contamination across India using Machine Learning, Regression Models, and a Fuzzy Inference System (FIS). This system supports early detection of fluoride-vulnerable regions and helps government agencies and water-resource managers make informed decisions.
 </p>
 
 <hr>
 
-<h2>🌍 Project At a Glance</h2>
+<h2>Project Objectives</h2>
 
-✔ Analyzes <b>16,776+</b> groundwater samples from Indian states & districts  
-✔ Predicts fluoride levels using <b>Regression Models</b>  
-✔ Classifies water into <b>Safe / Moderate / High-risk</b> categories using ML  
-✔ Uses <b>Mamdani Fuzzy Logic</b> for human-interpretable risk scoring  
-✔ Generates <b>state-level analysis & heatmaps</b>  
-✔ Built for <b>accuracy, interpretability, and large-scale deployment</b>  
-
-<hr>
-
-<h2>🧠 Why This Project?</h2>
-
-Fluoride contamination is a major threat in Indian groundwater. Traditional chemical testing is slow and costly.  
-This project solves that by merging:
-
-🔹 <b>Hydrogeochemical science</b>  
-🔹 <b>Machine Learning</b>  
-🔹 <b>Fuzzy Logic interpretation</b>  
-
-➡ Result: A fast, flexible, and reliable groundwater risk assessment system.
+<ul>
+  <li><b>Large-Scale Analysis</b>: Evaluates over 16,776 groundwater samples across various Indian states and districts.</li>
+  <li><b>Predictive Modeling</b>: Utilizes advanced regression techniques to estimate precise fluoride concentrations.</li>
+  <li><b>Automated Classification</b>: Categorizes water quality into Safe, Moderate, and High-risk zones using optimized classifiers.</li>
+  <li><b>Interpretability</b>: Employs Mamdani Fuzzy Logic to convert technical data into human-readable risk scores.</li>
+  <li><b>Spatial Visualization</b>: Generates state-level heatmaps and regional analysis for spatial awareness.</li>
+</ul>
 
 <hr>
 
-<h2>📂 Dataset Overview</h2>
+<h2>Dataset Architecture</h2>
 
-Each record contains:
+<p>The dataset comprises physicochemical parameters that significantly influence fluoride mobility within aquifers.</p>
 
-<table>
-<tr><th>Feature Type</th><th>Parameters</th></tr>
-<tr><td>Physicochemical</td><td>pH, EC, TDS, Na⁺, Ca²⁺, Mg²⁺, K⁻, Cl⁻, SO₄²⁻, NO₃⁻, HCO₃⁻</td></tr>
-<tr><td>Target</td><td>Fluoride concentration (mg/L)</td></tr>
-<tr><td>Location</td><td>State + District identifiers</td></tr>
-</table>
-
-These features significantly impact fluoride mobility inside aquifers.
-
-<hr>
-
-<h2>⚙️ Data Preprocessing Pipeline</h2>
-
-<h3>🔧 1. Standardization</h3>
-• Cleans and normalizes column names (e.g., “EC µS/cm” → “EC”).
-
-<h3>🧹 2. Invalid & Missing Values</h3>
-• Converts “NA”, “–”, blanks to NaN  
-• Uses <b>Median Imputation</b> for numeric stability  
-
-<h3>🧪 3. Fluoride Risk Label Creation</h3>
-Based on WHO drinking water standards:
-
-<table>
-<tr><th>Class</th><th>Fluoride Level</th><th>Interpretation</th></tr>
-<tr><td>0</td><td>&lt; 1.5 mg/L</td><td>Safe</td></tr>
-<tr><td>1</td><td>1.5–2.5 mg/L</td><td>Moderate Risk</td></tr>
-<tr><td>2</td><td>&gt; 2.5 mg/L</td><td>High Risk</td></tr>
-</table>
-
-<h3>📏 4. Scaling</h3>
-• Min–Max scaling to range <b>0–1</b>
-
-<h3>🧩 5. Categorical Encoding</h3>
-• One-Hot Encoding for state, district, well-type  
-
-<h3>⚖️ 6. Class Balancing (SMOTE)</h3>
-• Balances all 3 risk classes → dataset becomes <b>perfectly balanced</b>.
-
-<hr>
-
-<h2>🤖 Machine Learning Models Implemented</h2>
-
-Seven models were trained:
-
-| Model | Type | Notes |
-|-------|------|-------|
-| Logistic Regression | Linear | Baseline clarity |
-| SVM (RBF) | Kernel | Captures nonlinearity |
-| ANN | Neural Network | Learns complex patterns |
-| AdaBoost | Ensemble | Focuses on hard samples |
-| XGBoost | Gradient Boosting | Fast + accurate |
-| LightGBM | Boosting | Efficient, large-scale |
-| Random Forest | Ensemble | ⭐ <b>Best classifier</b> |
-
-<h3>🏆 Top Performer: Random Forest Classifier</h3>
-
-🎯 Accuracy: <b>93%</b>  
-🎯 Strong precision, recall, and F1 across all classes  
-
-<hr>
-
-<h2>📈 Regression Models for Continuous Prediction</h2>
-
-Three regression models were tested:
-
-<table>
-<tr><th>Model</th><th>R² Score</th><th>RMSE</th></tr>
-<tr><td>Linear Regression</td><td>0.218</td><td>0.709</td></tr>
-<tr><td><b>Random Forest Regressor</b></td><td><b>0.273</b></td><td><b>0.684</b></td></tr>
-<tr><td>SVR</td><td>0.174</td><td>0.729</td></tr>
-</table>
-
-🏅 <b>Best Model: Random Forest Regressor</b>  
-
-<hr>
-
-<h2>🌡️ Fuzzy Logic Risk Classification</h2>
-
-A Mamdani-type Fuzzy Inference System generates interpretable risk labels.
-
-<h3>🏷 Input Memberships (Fluoride):</h3>
-
-- Very Low  
-- Low  
-- Normal  
-- High  
-- Very High  
-
-<h3>🟦 Output Memberships (Risk Score):</h3>
-
-- Low Risk  
-- Medium Risk  
-- High Risk  
-
-<h3>📜 Example Rules:</h3>
-
-- If Fluoride is <b>Very High</b> → Risk is <b>High</b>  
-- If Fluoride is <b>Normal</b> → Risk is <b>Low</b>  
-- If Fluoride is <b>Low</b> → Risk is <b>Medium</b>  
-
-<h3>🧮 Final Categories:</h3>
-
-<table>
-<tr><th>Risk Score</th><th>Category</th></tr>
-<tr><td>&lt; 33</td><td>Low</td></tr>
-<tr><td>33–66</td><td>Medium</td></tr>
-<tr><td>&gt;= 66</td><td>High</td></tr>
+<table width="100%">
+  <tr>
+    <th align="left">Feature Category</th>
+    <th align="left">Parameters Included</th>
+  </tr>
+  <tr>
+    <td><b>Physicochemical</b></td>
+    <td>pH, EC, TDS, Na⁺, Ca²⁺, Mg²⁺, K⁺, Cl⁻, SO₄²⁻, NO₃⁻, HCO₃⁻</td>
+  </tr>
+  <tr>
+    <td><b>Target Variable</b></td>
+    <td>Fluoride concentration (mg/L)</td>
+  </tr>
+  <tr>
+    <td><b>Geospatial</b></td>
+    <td>State and District identifiers</td>
+  </tr>
 </table>
 
 <hr>
 
-<h2>📊 Key Results</h2>
+<h2>Data Preprocessing Pipeline</h2>
 
-<h3>✔ ML Performance</h3>
-• 93% accuracy  
-• Low misclassification  
-• Stable precision & recall  
-
-<h3>✔ Fuzzy Interpretation</h3>
-• State-wise risk maps  
-• Fuzzy score distributions  
-• Easy human understanding  
-
-<h3>✔ Combined ML + FIS System</h3>
-<b>Accurate + Interpretable + Scalable</b>
-
-<hr>
-
-<h2>⚠️ Limitations</h2>
-
-🔸 Dataset originally imbalanced  
-🔸 No seasonal data  
-🔸 Missing contaminants (heavy metals, nitrate interactions)  
-🔸 No spatial hydrogeology included  
+<ol>
+  <li><b>Standardization</b>: Normalization of column nomenclature (e.g., standardizing “EC µS/cm” to “EC”).</li>
+  <li><b>Imputation</b>: Conversion of invalid entries to null values followed by Median Imputation to maintain numeric stability.</li>
+  <li><b>Risk Labeling</b>: Implementation of WHO drinking water standards for classification.
+    <ul>
+      <li>Class 0 (&lt; 1.5 mg/L): Safe</li>
+      <li>Class 1 (1.5–2.5 mg/L): Moderate Risk</li>
+      <li>Class 2 (&gt; 2.5 mg/L): High Risk</li>
+    </ul>
+  </li>
+  <li><b>Scaling</b>: Application of Min-Max scaling to a standard 0–1 range.</li>
+  <li><b>Class Balancing</b>: Utilization of SMOTE (Synthetic Minority Over-sampling Technique) to resolve dataset imbalances and achieve perfect class parity.</li>
+</ol>
 
 <hr>
 
-<h2>🔮 Future Directions</h2>
+<h2>Machine Learning Performance</h2>
 
-✨ GIS heatmaps  
-✨ Deep learning for prediction  
-✨ Multi-contaminant modeling  
-✨ SHAP/LIME for explainability  
-✨ Real-time dashboards  
+<p>Seven distinct models were evaluated to determine the most effective classifier for fluoride risk.</p>
+
+<table width="100%">
+  <tr>
+    <th align="left">Model</th>
+    <th align="left">Classification Type</th>
+    <th align="left">Accuracy</th>
+  </tr>
+  <tr>
+    <td><b>Random Forest</b></td>
+    <td><b>Ensemble Learning</b></td>
+    <td><b>93% (Top Performer)</b></td>
+  </tr>
+  <tr>
+    <td>XGBoost</td>
+    <td>Gradient Boosting</td>
+    <td>High Accuracy</td>
+  </tr>
+  <tr>
+    <td>LightGBM</td>
+    <td>Boosting</td>
+    <td>Efficiency at Scale</td>
+  </tr>
+  <tr>
+    <td>ANN</td>
+    <td>Neural Network</td>
+    <td>Pattern Recognition</td>
+  </tr>
+  <tr>
+    <td>SVM (RBF)</td>
+    <td>Kernel-based</td>
+    <td>Nonlinear Mapping</td>
+  </tr>
+</table>
+
+<h3>Regression Analysis (Continuous Prediction)</h3>
+
+<table width="100%">
+  <tr>
+    <th align="left">Model</th>
+    <th align="left">R² Score</th>
+    <th align="left">RMSE</th>
+  </tr>
+  <tr>
+    <td><b>Random Forest Regressor</b></td>
+    <td><b>0.273</b></td>
+    <td><b>0.684</b></td>
+  </tr>
+  <tr>
+    <td>Linear Regression</td>
+    <td>0.218</td>
+    <td>0.709</td>
+  </tr>
+  <tr>
+    <td>SVR</td>
+    <td>0.174</td>
+    <td>0.729</td>
+  </tr>
+</table>
 
 <hr>
-<h2>📥 Installation & Usage</h2>
+
+<h2>Fuzzy Logic Inference System (FIS)</h2>
+
+<p>The system utilizes a Mamdani-type FIS to handle environmental uncertainty and provide interpretable results.</p>
+
+<ul>
+  <li><b>Input Memberships</b>: Very Low, Low, Normal, High, Very High.</li>
+  <li><b>Output Risk Scores</b>: Low Risk (&lt; 33), Medium Risk (33–66), High Risk (&gt;= 66).</li>
+</ul>
+
+<hr>
+
+<h2>Limitations & Future Scope</h2>
+
+<p><b>Current Constraints:</b></p>
+<ul>
+  <li>Absence of seasonal temporal data.</li>
+  <li>Limited to fluoride without accounting for heavy metal or nitrate interactions.</li>
+  <li>Exclusion of complex spatial hydrogeological layers.</li>
+</ul>
+
+<p><b>Future Directions:</b></p>
+<ul>
+  <li>Implementation of GIS-based real-time heatmaps.</li>
+  <li>Integration of Deep Learning for enhanced predictive precision.</li>
+  <li>Incorporation of SHAP/LIME for model explainability and transparency.</li>
+</ul>
+
+<hr>
+
+<h2>Installation & Usage</h2>
 
 ```bash
 # Clone the repository
-git clone https://github.com/USERNAME/REPOSITORY
+git clone [https://github.com/codemuggle09/AquaRisk](https://github.com/codemuggle09/AquaRisk)
 
 # Navigate into project folder
-cd REPOSITORY
+cd AquaRisk
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Run the main pipeline
-python main.py
-```
-
-<hr>
-<h2>👥 Contributors</h2>
-
-👩‍💻 <b>Aishwarya Para (2023BMS-022)</b><br>
-👩‍💻 <b>Nihita Kolukula (2023BMS-015)</b>
-
-
+# Launch the dashboard
+python -m streamlit run webapp.py
