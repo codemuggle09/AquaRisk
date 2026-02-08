@@ -1,0 +1,16 @@
+numpy
+pandas
+matplotlib
+scikit-learn
+joblib
+xgboost
+lightgbm
+imbalanced-learn
+scikit-fuzzy
+networkx
+
+
+#tensorflow
+streamlit
+folium
+streamlit-folium
